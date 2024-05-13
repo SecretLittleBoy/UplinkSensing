@@ -43,7 +43,12 @@ if __name__=="__main__":
         data_threads = 0
     elif platform.system()=='Linux':
         data_threads = 4
+    elif platform.system()=='Darwin':
+        data_threads = 0
+        print('MacOS System may have some problems')
     else:
+        print(platform.system())
+        print('Unknown System')
         assert False
 
     # Initial Network
