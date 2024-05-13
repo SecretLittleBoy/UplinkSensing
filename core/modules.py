@@ -1,5 +1,6 @@
 import torch.nn as nn
 
+
 class ResBlock(nn.Module):
     def __init__(self, inChannels=64, outChannels=64):
         super(ResBlock, self).__init__()
@@ -19,7 +20,7 @@ class ResBlock(nn.Module):
 
 
 class upsampler(nn.Module):
-    def __init__(self, up_scale,in_channels=64):
+    def __init__(self, up_scale, in_channels=64):
         super(upsampler, self).__init__()
         layers = []
         single_upsample = nn.Sequential(

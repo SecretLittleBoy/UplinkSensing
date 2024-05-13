@@ -7,11 +7,11 @@ from core import Net, MyDataset, GetDataset
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Train
+
 def train(train_data, net, lossF, optimizer, device, runningLoss, count):
     net.train()
     for H_full, H_split1, H_split2 in train_data:
-        H_full, H_split1, H_split2 = H_full.to(device), H_split1.to(device), H_split2.to(device)
+        H_full, H_split1, H_split2 = H_full.float().to(device), H_split1.float().to(device), H_split2.float().to(device)
         # grad zero for parameter updating
         optimizer.zero_grad()
         # start training
@@ -26,7 +26,7 @@ def train(train_data, net, lossF, optimizer, device, runningLoss, count):
         count += 1
     return runningLoss, count
 
-# Eval
+
 def eval(eval_data, net, lossF, device, runningLoss, count):
     pass
 
@@ -53,8 +53,7 @@ if __name__ == "__main__":
         assert False
 
     # Initial Network
-    device = torch.device(
-        f"cuda:{gpu_id}" if torch.cuda.is_available() else "cpu")
+    device = torch.device(f"cuda:{gpu_id}" if torch.cuda.is_available() else "cpu")
     net = Net().to(device)
     print(" Net Structure:\n", net)
     # Create Dataset
