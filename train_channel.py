@@ -11,8 +11,7 @@ import numpy as np
 def train(train_data, net, lossF, optimizer, device, runningLoss, count):
     net.train()
     for H_full, H_split1, H_split2 in train_data:
-        H_full, H_split1, H_split2 = H_full.to(
-            device), H_split1.to(device), H_split2.to(device)
+        H_full, H_split1, H_split2 = H_full.to(device), H_split1.to(device), H_split2.to(device)
         # grad zero for parameter updating
         optimizer.zero_grad()
         # start training
