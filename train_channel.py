@@ -20,13 +20,13 @@ def train(train_data, net, lossF, optimizer, device, runningLoss, count):
         # print(np.shape(H_full))
 
         outputs = net(H_full)
-        outputs1 = net(H_split1.unsqueeze(0))
-        outputs2 = net(H_split2.unsqueeze(0))
-        # print('Size of outputs:'+ str(np.shape(outputs)))
-        # print('Size of H_split1:'+ str(np.shape(H_split1)))
-        # print('Size of H_split2:'+ str(np.shape(H_split2)))
-        # loss = lossF(outputs, H_split1, H_split2)
-        loss = lossF(outputs, outputs1 + outputs2)
+        # outputs1 = net(H_split1.unsqueeze(0))
+        # outputs2 = net(H_split2.unsqueeze(0))
+        # print('Size of outputs:' + str(np.shape(outputs)))
+        # print('Size of H_split1:' + str(np.shape(H_split1)))
+        # print('Size of H_split2:' + str(np.shape(H_split2)))
+        loss = lossF(torch.sum(outputs), torch.sum(H_split1 + H_split2))
+        # loss = lossF(outputs, outputs1 + outputs2)
         loss.backward()     # backward
         optimizer.step()    # parameters update
         runningLoss += loss.item()  # sum the loss for every batch
