@@ -1,0 +1,126 @@
+MacOS System may have some problems
+ Net Structure:
+ Net(
+  (encoder): encoder(
+    (encode_net): Sequential(
+      (0): Sequential(
+        (0): Conv2d(1, 4, kernel_size=(3, 3), stride=(2, 2), padding=(2, 2), bias=False)
+        (1): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): PReLU(num_parameters=1)
+      )
+      (1): ResBlock(
+        (resblock): Sequential(
+          (0): Conv2d(4, 4, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): PReLU(num_parameters=1)
+          (3): Conv2d(4, 4, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (2): ResBlock(
+        (resblock): Sequential(
+          (0): Conv2d(4, 4, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): PReLU(num_parameters=1)
+          (3): Conv2d(4, 4, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (3): Sequential(
+        (0): Conv2d(4, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): PReLU(num_parameters=1)
+      )
+      (4): ResBlock(
+        (resblock): Sequential(
+          (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): PReLU(num_parameters=1)
+          (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (5): ResBlock(
+        (resblock): Sequential(
+          (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): PReLU(num_parameters=1)
+          (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (6): ResBlock(
+        (resblock): Sequential(
+          (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): PReLU(num_parameters=1)
+          (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (7): ResBlock(
+        (resblock): Sequential(
+          (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): PReLU(num_parameters=1)
+          (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (decoder): decoder(
+    (input_layer): Sequential(
+      (0): ResBlock(
+        (resblock): Sequential(
+          (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): PReLU(num_parameters=1)
+          (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Conv2d(16, 4, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (upsampler): upsampler(
+      (upsample_module): Sequential(
+        (0): Sequential(
+          (0): Conv2d(4, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (1): PixelShuffle(upscale_factor=2)
+          (2): PReLU(num_parameters=1)
+        )
+        (1): Sequential(
+          (0): Conv2d(4, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (1): PixelShuffle(upscale_factor=2)
+          (2): PReLU(num_parameters=1)
+        )
+      )
+    )
+    (output_conv): Conv2d(4, 2, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), bias=False)
+  )
+  (channel_model): Identity()
+)
+Initializing the train Dataset...
+Initializing the test Dataset...
+Epoch 1
+-------------------------------
+[INFO] Epoch 1 loss: 0.982
+Epoch 2
+-------------------------------
+current best loss:0.4889686770971054
+[INFO] Epoch 2 loss: 0.489
+Epoch 3
+-------------------------------
+current best loss:0.4012731313992223
+[INFO] Epoch 3 loss: 0.401
+Epoch 4
+-------------------------------
+current best loss:0.35531056343673506
+[INFO] Epoch 4 loss: 0.355
+Epoch 5
+-------------------------------
+current best loss:0.3238990817674368
+[INFO] Epoch 5 loss: 0.324
+[INFO] Finished Training 
+
+MSE of the last epoch5:0.3238990817674368
